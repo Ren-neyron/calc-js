@@ -1,0 +1,85 @@
+<html>
+<head>
+<style>
+
+ #result{
+  background: #c4c4c4;
+ }
+ 
+    table {
+      border-collapse: collapse;
+    }
+
+    td {
+      border: 1px solid black;
+      padding: 3px 5px;
+    }
+	
+   .button1{
+     background: #c4c4c4;
+	 width: 40px;
+	 border-radius:20px;
+    }
+
+   .pers_values{
+     
+    }
+
+   .pers_skills{
+      
+    }
+
+	
+</style>
+</head>
+
+<body>
+
+<h2> Статы персонажа </h2>
+
+<div class="pers_values">
+ Минимальная атака: <input type="number"  id="min_atk"><br>
+ Максимальная атака: <input type="number"  id="max_atk"><br>
+ Показатель атаки: <input type="number"  id="atk_lvl"><br>
+ Показатель урона по монстрам: <input type="number"  id="slayer_lvl"><br>
+</div>
+
+<h2> Умения </h2>
+
+<div class="pers_skills">
+ <button id="skill1">Удар дикаря</button>
+</div>
+
+  
+<div class="pers_result">
+ <p id="result_sum"></p>
+</div>
+
+
+  <script>
+   
+  function skill_mk(){
+  
+   	let min_atk = document.getElementById("min_atk").value;
+	let max_atk = document.getElementById("max_atk").value;
+	let atk_lvl = document.getElementById("atk_lvl").value;
+	let slayer_lvl = document.getElementById("slayer_lvl").value;
+	
+	// Считаем результат для нижней и верхней планки
+
+	console.log(atk_lvl);
+	mk1_skill_dikar_low = (Number(min_atk) + (Number(min_atk) * 0.4) + 6536) * (1 + (atk_lvl / 100)) * (1 + (slayer_lvl / 100)); 
+	mk1_skill_dikar_max = (Number(max_atk) + (Number(max_atk) * 0.4) + 6536) * (1 + (atk_lvl / 100)) * (1 + (slayer_lvl / 100));
+	
+	document.getElementById("result_sum").innerHTML =  mk1_skill_dikar_low + " - " + mk1_skill_dikar_max;
+  
+  }
+  skill1.addEventListener("click" , skill_mk);
+
+ </script>
+ 
+ 
+</body>
+
+
+</html>
